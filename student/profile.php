@@ -7,7 +7,9 @@ include 'connect_db.php';
 $st_id = $_SESSION['st_id'];
 $st_name = isset($_SESSION['st_name']) ? $_SESSION['st_name'] : '';
 $user_email = isset($_SESSION['st_email']) ? $_SESSION['st_email'] : '';
+$user_profession = isset($_SESSION['st_profession']) ? $_SESSION['st_profession'] : '';
 $user_image = isset($_SESSION['st_image']) ? $_SESSION['st_image'] : '';
+
 
 ?>
 
@@ -50,11 +52,12 @@ $user_image = isset($_SESSION['st_image']) ? $_SESSION['st_image'] : '';
          </div>
 
          <div class="profile">
-            <!--<img src="<?php echo $image; ?>" class="image" alt="User Image">-->
+         <img src="images/pic-5.jpg" class="image" alt="">
             <p class="role"><?php echo $st_name; ?></p>
+           
             <a href="profile.php" class="btn">View Profile</a>
             <div class="flex-btn">
-               <a href="http://localhost/LMS/admin/login.html" class="option-btn">Logout</a>
+               <a href="../admin/login.html" class="option-btn">Logout</a>
             </div>
          </div>
 
@@ -68,16 +71,18 @@ $user_image = isset($_SESSION['st_image']) ? $_SESSION['st_image'] : '';
 
       <div class="info">
 
-         <div class="user">
-            <img src="<?php echo $_SESSION['st_image']; ?>" class="image rounded-circle" alt="User Image">
-            <p class="role"><?php echo $st_name; ?></p>
-
-            <!-- Add the email information here -->
-            <div class="box" style="font-size: small; text-align: center;">
-               <i class="fas fa-envelope"></i>
-               <span><?php echo $user_email; ?></span>
-            </div>
-         </div>
+      <div class="user">
+     <!-- <img src="<?php echo $user_image; ?>" class="image" alt="<?php echo $st_name; ?>">  -->
+  
+    <h3 class="role"><?php echo $st_name; ?></h3><br>
+    
+    <!-- Add the email and profession information here -->
+    <div class="box" style="font-size: small; text-align: center;">
+  
+        <h4>  <i class="fas fa-envelope"></i>  <?php echo $user_email; ?></h4> <br>
+        <h4><?php echo $_SESSION['st_profession']; ?></h4> <!-- Display the profession here -->
+    </div>
+</div>
 
       </div>
 

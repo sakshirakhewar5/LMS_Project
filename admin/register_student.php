@@ -40,10 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES['image']['name']);
         move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-
+        
+        // Store the image path in a variable
+        $imagePath = $target_file;
+        
         // Insert user data into the database
-        $sql = "INSERT INTO register_student (name, profession, email, password, image_path) VALUES ('$name', '$profession', '$email', '$hashedPassword', '$target_file')";
-
+        $sql = "INSERT INTO register_student (name, profession, email, password, image_path) VALUES ('$name', '$profession', '$email', '$hashedPassword', '$imagePath')";
         if ($conn->query($sql) === TRUE) {
             echo "<script>alert('Registration successful!');</script>";
             echo "<script>window.location = 'students.php';</script>";

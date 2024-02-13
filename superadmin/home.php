@@ -29,9 +29,21 @@
       </div>
 
       <div class="box">
-         <h3 class="title">Assign Course</h3>
+         <h3 class="title">Create Course</h3>
          <p class="tutor">.......</p>
-         <a href="courses.php" class="inline-btn">get started</a>
+         <a href="create_courses_display.php" class="inline-btn">create course here</a>
+      </div>
+
+      <div class="box">
+         <h3 class="title">course detail</h3><!--Newly created-->
+         <p class="tutor">.......</p>
+         <a href="course_details.php" class="inline-btn">course contain</a>
+      </div>
+
+      <div class="box">
+         <h3 class="title">Assign to Admin</h3><!--Newly created-->
+         <p class="tutor">.......</p>
+         <a href="assign_course_admin.php" class="inline-btn">Assign to Admin</a>
       </div>
 
       <div class="box">

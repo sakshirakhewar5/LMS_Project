@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>teachers</title>
+   <title>courses</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -15,44 +16,36 @@
 </head>
 
 <body>
-<?php include 'header.php'; ?>
 
-<section class="teachers">
+   <?php include 'header.php'; ?>
 
-   <h1 class="heading">Prominent Admin</h1><!--Newly created-->
-
-   <form action="" method="post" class="search-tutor">
-      <input type="text" name="search_box" placeholder="search Admin..." maxlength="100">
-      <button type="submit" class="fas fa-search" name="search_tutor"></button>
-   </form>
-
-
+   <section class="teachers">
    <div class="box-container">
 
       <div class="box offer">
-         <h3>Add a Admins</h3><!--Newly created-->
+         <h3>Create Course</h3><!--Newly created-->
          <p>..........</p>
-         <a href="register.php" class="inline-btn">Add Admin</a>
+         <a href="create_course.php" class="inline-btn">create course</a>
       </div>
 
-
-    <?php
+      
+      <?php
     include 'db_connection.php';
 
-    $tableName = "admins";
+    $tableName = "create_course";
 
     // Check if the form is submitted for deletion
-    if (isset($_POST['delete_admin'])) {
-        $adminIdToDelete = $_POST['admin_id_to_delete'];
+    if (isset($_POST['delete_course'])) {
+        $courseIdToDelete = $_POST['course_id_to_delete'];
 
         // SQL query to delete admin
-        $sql = "DELETE FROM $tableName WHERE id = $adminIdToDelete";
+        $sql = "DELETE FROM $tableName WHERE course_id = $courseIdToDelete";
         $result = $conn->query($sql);
 
         if ($result) {
-            $successMessage = "Admin deleted successfully.";
+            $successMessage = "course deleted successfully.";
         } else {
-            $errorMessage = "Error deleting admin: " . $conn->error;
+            $errorMessage = "Error deleting course: " . $conn->error;
         }
     }
 
@@ -77,10 +70,11 @@
                 <!-- Display admin information -->
                 <div class="tutor">
                     <!-- Display admin profile image, name, and email -->
-                    <img src="<?php echo $row['profile_image']; ?>" alt="">
                     <div>
-                        <h3><?php echo $row['name']; ?></h3>
-                        <span><?php echo $row['email']; ?></span>
+                    <h3><?php echo $row['course_name']; ?></h3>
+                         
+                        <!-- <h3/>Description<?php echo $row['course_description']; ?></h3> -->
+                        <!-- <span>Duration<?php echo $row['course_duration']; ?></span> -->
                     </div>
                 </div>
 
@@ -89,17 +83,17 @@
 
                 <!-- Delete form -->
                 <div class="tutor">
-                <a href="teacher_profile.php?id=<?php echo $row['id']; ?>"class="inline-btn">View</a>
+                <a href="view_create_course.php?id= <?php echo $row['course_id']; ?>"class="inline-btn">View</a>
                 <form method="post" class="delete-form" >
-                    <input type="hidden" name="admin_id_to_delete" value="<?php echo $row['id']; ?>">
-                    <button type="submit" name="delete_admin" class="inline-delete-btn" onclick="return confirm('Are you sure you want to delete this admin?')">Delete</button>
+                    <input type="hidden" name="course_id_to_delete" value="<?php echo $row['course_id']; ?>">
+                    <button type="submit" name="delete_course" class="inline-delete-btn" onclick="return confirm('Are you sure you want to delete this course?')">Delete</button>
                  </form>
                 </div>
             </div>
 <?php
         }
     } else {
-        $errorMessage = "No admins created by the super admin";
+        $errorMessage = "No course created by the super admin";
     }
 ?>
 
